@@ -9,11 +9,28 @@ class ProductsController < ApplicationController
   end
   def create
     @product = Product.new(
-      name: "chips",
-      price: 5,
-      image_url: "https://images.thdstatic.com/productImages/b7cb9f9d-1bb8-4a6c-bc46-cfb65636accb/svn/snack-foods-32505-64_600.jpg",
-      description: 'a bag of chips')
+      name: params[:name],
+      price: params[:price],
+      image_url: params[:image_url],
+      description: params[:description],
+      )
     @product.save
     render template: "products/show"
   end
+
+  def update
+    @product = Product.find_by(id: params[:id])
+    @product.name = params[:name]
+    @product.price = params[:price]
+    @product.image_url = params[:product]
+    @product.description = params[:description]
+    @product.save
+    render template: "products/show"
+  end
+
+  def destroy 
+    @product = Product.find_by(id: params[:id])
+    @product.destroy
+    render json: { message: "The recipe has been removed."}
+  end 
 end
