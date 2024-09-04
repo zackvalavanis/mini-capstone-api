@@ -13,6 +13,8 @@ class ProductsController < ApplicationController
       price: params[:price],
       image_url: params[:image_url],
       description: params[:description],
+      created_at: params[:created_at],
+      updated_at: params[:updated_at]
       )
     @product.save
     render template: "products/show"
