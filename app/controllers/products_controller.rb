@@ -1,15 +1,16 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
-    render template: "products/index"
+    render :index
   end
   def show 
     @product = Product.find_by(id: params["id"])
-    render template: "products/show"
+    render :show
   end
   def create
     @product = Product.new(
       name: params[:name],
+      inventory: params[:inventory],
       price: params[:price],
       image_url: params[:image_url],
       description: params[:description],
@@ -17,7 +18,7 @@ class ProductsController < ApplicationController
       updated_at: params[:updated_at]
       )
     @product.save
-    render template: "products/show"
+    render :show
   end
 
   def update
@@ -27,7 +28,7 @@ class ProductsController < ApplicationController
     @product.image_url = params[:product] || @product.image_url
     @product.description = params[:description] || @product.description
     @product.save 
-    render template: "products/show"
+    render :show
   end
 
   def destroy 

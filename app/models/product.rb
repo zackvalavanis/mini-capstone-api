@@ -7,7 +7,10 @@ class Product < ApplicationRecord
   end
 
   def tax 
-    tax = price * 0.09
+    if price == nil 
+      tax = 0 
+    else tax = price * 0.09
+    end
   end
   def total 
     price + tax 
