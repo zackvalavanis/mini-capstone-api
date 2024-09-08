@@ -9,4 +9,9 @@
 #   end
 
 
-Product.update_all(price: 10)
+supplier1 = Supplier.new(
+  name: 'Jewel Osco',
+  email: 'JOsco@email.com',
+  phone_number: '5356455342'
+)
+supplier1.save 

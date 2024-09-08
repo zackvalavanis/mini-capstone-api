@@ -1,4 +1,5 @@
 json.id product.id
+json.supplier_id product.supplier_id
 json.name product.name
 json.inventory product.inventory
 json.price product.price
