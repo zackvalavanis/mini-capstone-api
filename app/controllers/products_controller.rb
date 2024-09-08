@@ -17,8 +17,11 @@ class ProductsController < ApplicationController
       created_at: params[:created_at],
       updated_at: params[:updated_at]
       )
-    @product.save
-    render :show
+    if @product.save
+      render :show
+    else 
+      render json: { errors: @product.errors.full_messages }
+    end
   end
 
   def update

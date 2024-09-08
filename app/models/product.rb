@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
-  validates :price, presence: true
-  validates :price, numericality: { greater_than: 6}
+  validates :price, presence: true, numericality: { greater_than: 6}
+  validates :name, presence: true, uniqueness: true 
 
   def is_discounted?
     if price <= 10
@@ -17,6 +17,10 @@ class Product < ApplicationRecord
   end
 
   def total 
-    price + tax
-  end 
+    if price.nil?
+      0
+    else
+      price + tax
+    end
+  end
 end
