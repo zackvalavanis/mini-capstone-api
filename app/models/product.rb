@@ -3,7 +3,8 @@ class Product < ApplicationRecord
   validates :name, presence: true, uniqueness: true 
 
   belongs_to :supplier
-
+  has_many :images
+  
   def is_discounted?
     if price <= 10
       p true
