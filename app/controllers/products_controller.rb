@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
       name: params[:name],
       inventory: params[:inventory],
       price: params[:price],
-      image_url: params[:image_url],
+      supplier_id: params[:supplier_id],
       description: params[:description],
       created_at: params[:created_at],
       updated_at: params[:updated_at]
@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
     @product.update(
       name: params[:name] || @product.name,
       price: params[:price] || @product.price,
-      image_url: params[:image_url] || @product.image_url,
+      supplier_id: params[:supplier_id] || @product.supplier_id,
       description: params[:description] || @product.description,
       inventory: params[:inventory] || @product.inventory,
       supplier_id: params[:supplier_id] || @product.supplier_id

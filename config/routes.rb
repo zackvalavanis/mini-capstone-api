@@ -11,7 +11,15 @@ Rails.application.routes.draw do
   delete "/products/:id" => "products#destroy"
 
   get "/suppliers" => "suppliers#index"
+  patch "/suppliers/:id" => "suppliers#update"
+  post "/suppliers" => "suppliers#create"
+
+  get "/images" => "images#index"
+  patch "/images/:id" => "images#update"
+  post "/images" => "images#create"
+
   
+
   # Defines the root path route ("/")
   # root "posts#index"
 end
