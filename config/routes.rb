@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   patch "/images/:id" => "images#update"
   post "/images" => "images#create"
 
+  post "/users" => "users#create"
+
   
 
   # Defines the root path route ("/")
