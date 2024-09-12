@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
       total: total
     )
     if orders.save
-      render json: { message: 'The order has been submitted'}, status: :created
+      render json: { message: 'The order has been submitted'}, status: :ok
     else 
       render json: {}, status: :unauthorized
     end
