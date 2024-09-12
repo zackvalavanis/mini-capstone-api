@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   validates :name, presence: true, uniqueness: true 
 
   belongs_to :supplier
+  has_many :orders
   
   has_many :images
 
