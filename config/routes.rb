@@ -19,12 +19,16 @@ Rails.application.routes.draw do
   post "/images" => "images#create"
 
   post "/users" => "users#create"
-
+  delete "/users/:id" => "users#destroy"
 
   post "/sessions" => "sessions#create"
 
-  
+  get 'orders' => "orders#index"
+  get "/orders/:id" => "orders#show"
+  post "/orders" => "orders#create"
 
+
+  
   # Defines the root path route ("/")
   # root "posts#index"
 end
