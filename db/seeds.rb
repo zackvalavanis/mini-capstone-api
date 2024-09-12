@@ -28,9 +28,9 @@
 #     supplier_id
 # )
 
-images = Image.new( 
-  image_url: "https://www.meijer.com/content/dam/meijer/product/0054/50/0193/22/0054500193229_1_A1C1_0600.png",
-  product_id: 17
-)
-images.save 
+# images = Image.new( 
+#   image_url: "https://www.meijer.com/content/dam/meijer/product/0054/50/0193/22/0054500193229_1_A1C1_0600.png",
+#   product_id: 17
+# )
+# images.save 
 
