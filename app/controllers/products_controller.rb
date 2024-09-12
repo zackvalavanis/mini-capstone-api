@@ -12,15 +12,13 @@ class ProductsController < ApplicationController
       name: params[:name],
       inventory: params[:inventory],
       price: params[:price],
-      supplier_id: params[:supplier_id],
       description: params[:description],
-      created_at: params[:created_at],
-      updated_at: params[:updated_at]
+      supplier_id: params[:supplier_id]
       )
     if @product.save
       render :show
     else 
-      render json: { errors: @product.errors.full_messages }
+      render json: { errors: @product.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

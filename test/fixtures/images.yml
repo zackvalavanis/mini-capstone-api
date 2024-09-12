@@ -3,6 +3,8 @@
 one:
   image_url: MyString
   product_id: MyString
+  
+  
 
 two:
   image_url: MyString
