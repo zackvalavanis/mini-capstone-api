@@ -28,8 +28,9 @@
 #     supplier_id
 # )
 
-# images = Image.new( 
-#   image_url: "https://marvel-b1-cdn.bc0a.com/f00000000202513/www.fosterfarms.com/wp-content/uploads/960-72763-450959-RTC-CON-PCNCPCK-25PD_H.png",
-#   product_id: 15
-# )
-# images.save 
+images = Image.new( 
+  image_url: "https://www.meijer.com/content/dam/meijer/product/0054/50/0193/22/0054500193229_1_A1C1_0600.png",
+  product_id: 17
+)
+images.save 
+
