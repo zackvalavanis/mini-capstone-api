@@ -24,16 +24,12 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find_by(id: params[:id])
-
-    @product.update(
-      name: params[:name] || @product.name,
-      price: params[:price] || @product.price,
-      supplier_id: params[:supplier_id] || @product.supplier_id,
-      description: params[:description] || @product.description,
-      inventory: params[:inventory] || @product.inventory,
-      supplier_id: params[:supplier_id] || @product.supplier_id
-    )
-    render :show
+    @product.name = params[:name] || @product.name
+    @product.price = params[:price] || @product.price
+    @product.description = params[:description] || @product.description
+    @product.supplier_id = params[:supplier_id] || @product.supplier_id
+    @product.save
+    render template: "products/show"
   end
 
   def destroy 
