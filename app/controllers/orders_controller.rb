@@ -3,12 +3,12 @@ class OrdersController < ApplicationController
     p "HERE IS CURRENT USER"
     p current_user
     p "THAT WAS CURRENT USER"
-    @orders = Order.all
+    @orders = Order.where(user_id: current_user.id)
     render :index
   end
   
   def show
-    @order = Order.find_by(id: params[:id])
+    @order = Order.find_by(id: params[:id], user_id: current_user.id)
     render :show 
   end
 
