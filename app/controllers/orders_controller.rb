@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     tax = subtotal * 0.10
     total = subtotal + tax
 
-    orders = Order.new( 
+    @order = Order.new( 
       user_id: current_user.id,
       product_id: params[:product_id],
       quantity: params[:quantity],
@@ -26,10 +26,7 @@ class OrdersController < ApplicationController
       tax: tax,
       total: total
     )
-    if orders.save
-      render json: { message: 'The order has been submitted'}, status: :ok
-    else 
-      render json: {}, status: :unauthorized
-    end
+    @order.save
+    render :show
   end
 end
