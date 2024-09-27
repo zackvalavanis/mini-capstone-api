@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
   def index
-    # p "HERE IS CURRENT USER"
-    # p current_user
-    # p "THERE IS CURRENT USER"
+    p "HERE IS CURRENT USER"
+    p current_user
+    p "THERE IS CURRENT USER"
     @products = Product.all
     render :index
   end
