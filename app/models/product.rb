@@ -1,8 +1,8 @@
 class Product < ApplicationRecord
-  validates :name, presence: true, uniqueness: true 
-  validates :price, numericality: {greater_than: 6}
-  validates :description, presence: true
-  validates :supplier_id, presence: true
+  # validates :name, presence: true, uniqueness: true 
+  # validates :price, numericality: {greater_than: 6}
+  # validates :description, presence: true
+  # validates :supplier_id, presence: true
 
   belongs_to :supplier
   has_many :orders
