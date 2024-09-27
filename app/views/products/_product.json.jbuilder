@@ -11,3 +11,4 @@ json.supplier product.supplier
 json.created_at product.created_at
 json.updated_at product.updated_at
 json.images product.images
+json.images_with_default product.images_with_default 

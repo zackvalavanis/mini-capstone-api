@@ -29,4 +29,14 @@ class Product < ApplicationRecord
       price + tax
     end
   end
+
+  def images_with_default 
+    if images.length > 0 
+      return images 
+    else 
+      return [
+        {id: 100, image_url: 'https://i.pinimg.com/736x/09/8e/f6/098ef67a56c62b0ae7ec7b61edb9e006.jpg', created_at: Time.now, updated_at: Time.now}
+      ]
+    end  
+  end 
 end
