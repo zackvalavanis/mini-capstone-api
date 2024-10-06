@@ -3,10 +3,13 @@ class Product < ApplicationRecord
   validates :price, numericality: {greater_than: 0}
   validates :description, presence: true
   validates :supplier_id, presence: true
-
+  
   belongs_to :supplier
   has_many :orders
   has_many :images
+  has_many :category_products
+  has_many :categories, through: :category_products
+  
 
   def is_discounted?
     if price <= 10
@@ -39,4 +42,6 @@ class Product < ApplicationRecord
       ]
     end  
   end 
+
+
 end
