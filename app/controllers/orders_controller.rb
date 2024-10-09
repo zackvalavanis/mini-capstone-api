@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+
   def index 
     p "HERE IS CURRENT USER"
     p current_user
@@ -13,20 +14,31 @@ class OrdersController < ApplicationController
   end
 
   def create
-    product = Product.find(params[:product_id]) 
+
+    product_id = CartedProduct.where(user_id: current_user, status:'carted').pluck(:product_id)
     subtotal = product.price * params[:quantity].to_i
     tax = subtotal * 0.10
     total = subtotal + tax
 
+
     @order = Order.new( 
       user_id: current_user.id,
-      product_id: params[:product_id],
-      quantity: params[:quantity],
-      subtotal: subtotal,
-      tax: tax,
-      total: total
+      subtotal: 12,
+      tax: 1,
+      total: 13
     )
-    @order.save
+    if @order.save
+      CartedProduct.where(user_id: current_user.id, status: 'carted').update_all(order_id: @order.id, status: 'purchased')
+      render json: { message: 'The order has been placed.', order: @order }, status: :created
+    end
     render :show
   end
+
+  def destroy 
+    @order = Order.find_by(id: params[:id], user_id: current_user.id)
+    @order.destroy 
+    render json: { message: 'The order has been deleted.'}, status: :ok
+  end
+
+    
 end
