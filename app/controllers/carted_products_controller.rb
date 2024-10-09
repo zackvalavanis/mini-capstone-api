@@ -1,10 +1,8 @@
 class CartedProductsController < ApplicationController
   def index
     @carted_products = CartedProduct.where(status:['carted', 'purchased'])
-    if @carted_products.any? { |carted_product| carted_product.status == 'purchased' || carted_product.status == 'carted'}
-      render :index
-    end
-  end 
+    render :index
+  end   
 
   def delete 
     @carted_product = CartedProduct.find_by(id: params[:carted_product_id])
