@@ -15,17 +15,20 @@ class OrdersController < ApplicationController
 
   def create
 
-    product_id = CartedProduct.where(user_id: current_user, status:'carted').pluck(:product_id)
-    subtotal = product.price * params[:quantity].to_i
+    carted_products = CartedProduct.where(user_id: current_user.id, status:'carted')
+    subtotal = carted_products.sum do |carted_product|
+      product = Product.find(carted_product.product_id)
+      carted_product.quantity * product.price
+    end
+      
     tax = subtotal * 0.10
     total = subtotal + tax
 
-
     @order = Order.new( 
       user_id: current_user.id,
-      subtotal: 12,
-      tax: 1,
-      total: 13
+      subtotal: subtotal,
+      tax: tax,
+      total: total
     )
     if @order.save
       CartedProduct.where(user_id: current_user.id, status: 'carted').update_all(order_id: @order.id, status: 'purchased')
