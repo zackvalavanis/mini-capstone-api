@@ -1,7 +1,9 @@
 class CartedProductsController < ApplicationController
   def index
-    @carted_products = CartedProduct.all
-    render :index
+    @carted_products = CartedProduct.where(status:['carted', 'purchased'])
+    if @carted_products.any? { |carted_product| carted_product.status == 'purchased' || carted_product.status == 'carted'}
+      render :index
+    end
   end 
 
   def delete 
@@ -34,4 +36,11 @@ class CartedProductsController < ApplicationController
       render json: { errors: @carted_product.errors.full_messages }, status: :bad_request
     end
   end 
+
+  def destroy 
+    @carted_product = CartedProduct.find_by(id: params[:id])
+    render @carted_product
+    @carted_product.update(status: 'removed');
+  end 
+
 end
