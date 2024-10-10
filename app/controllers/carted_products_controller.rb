@@ -1,6 +1,6 @@
 class CartedProductsController < ApplicationController
   def index
-    @carted_products = CartedProduct.where(status:['carted', 'purchased'])
+    @carted_products = CartedProduct.where(user_id: current_user.id, status: 'carted')
     render :index
   end   
 
@@ -23,7 +23,7 @@ class CartedProductsController < ApplicationController
 
   def create
     @carted_product = CartedProduct.new(
-      user_id: params[:user_id], 
+      user_id: current_user.id, 
       product_id: params[:product_id], 
       quantity: params[:quantity], 
       status: params[:status]
