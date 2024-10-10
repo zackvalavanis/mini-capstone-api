@@ -34,7 +34,6 @@ class OrdersController < ApplicationController
       CartedProduct.where(user_id: current_user.id, status: 'carted').update_all(order_id: @order.id, status: 'purchased')
       render json: { message: 'The order has been placed.', order: @order }, status: :created
     end
-    render :show
   end
 
   def destroy 
