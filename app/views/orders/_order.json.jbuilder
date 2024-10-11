@@ -8,6 +8,8 @@ json.created_at order.created_at
 json.updated_at order.updated_at
 json.carted_products order.carted_products do |cp|
   json.id cp.id
+  json.product_name cp.product.name
   json.product cp.id
+  json.product_price cp.product.price
   json.quantity cp.quantity 
 end 
