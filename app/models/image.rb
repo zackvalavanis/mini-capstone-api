@@ -1,4 +1,5 @@
 class Image < ApplicationRecord
   belongs_to :product
-  belongs_to :carted_product
+  validates :image_url, presence: true
+  validates :product_id, presence: true
 end
