@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   post "/images" => "images#create"
   #Users
   post "/users" => "users#create"
+  get "users/current_user" => "users#show"
   delete "/users/:id" => "users#destroy"
   #Sessions 
   post "/sessions" => "sessions#create"
